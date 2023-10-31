@@ -7,21 +7,19 @@ let package = Package(
     name: "SPMBlago",
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
-        .library(
-            name: "SPMBlago",
-            targets: ["SPMBlago"]),
+        .library(name: "SPMBlago", targets: ["SPMBlago"]),
     ],
     dependencies: [
-//        .package(url: "https://github.com/SDWebImage/SDWebImage", from: "5.0.0"),
-        .package(url: "https://github.com/SDWebImage/SDWebImage", exact: "5.0.0"),
+        .package(url: "https://github.com/SDWebImage/SDWebImage", .upToNextMajor(from: "5.18.4")),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "SPMBlago"),
+            name: "SPMBlago", dependencies: ["SDWebImage"]),
         .testTarget(
             name: "SPMBlagoTests",
             dependencies: ["SPMBlago"]),
     ]
 )
+
