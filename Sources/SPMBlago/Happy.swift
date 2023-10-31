@@ -5,12 +5,24 @@
 //  Created by Nebo on 31.10.2023.
 //
 
-import Foundation
+import UIKit
+
+public protocol HappyListenerProtocol {
+    func didLoad()
+    func onClickPay()
+}
 
 public class Happy {
     
-    public static func log(string: String) {
-        print("Blago----\(string)")
+    let listener: HappyListenerProtocol
+    
+    public init(listener: HappyListenerProtocol) {
+        self.listener = listener
     }
     
+    public func open() -> UIViewController {
+        let ctrl = Controller()
+        ctrl.listener = listener
+        return ctrl
+    }
 }
